@@ -19,7 +19,7 @@ import time
     ]
 """
 
-class UDN :
+class CNYES :
     def __init__(self, page: int, start_url: str, start_id: int) -> None:
         
         self.page = page #爬的文章數
@@ -55,19 +55,24 @@ class UDN :
     def get_datetime(self, soup: BeautifulSoup):
         """從抓取的數據中提取文章的發佈日期"""
 
-        datetime_tag = soup.find(class_ = 'article-content__time')
-        return datetime_tag.text.split(" ")[0] if datetime_tag else None
+        datetime_tag = soup.find(class_ = 'alr4vq1')
+        return datetime_tag.text.split(" ")[-2] if datetime_tag else None
+
         
     def get_info(self):
         """循環抓取文章信息並輸出"""
-
+        
         for i in range(self.start_id - self.page, self.start_id) :
             soup = self.fetch_data(self.start_url+str(i))
-            # print(self.get_content(soup))
-            print(self.get_datetime(soup))
-            time.sleep(0.3)
+            if soup :
+                # print(self.get_content(soup))
+                print(self.get_datetime(soup))
+                time.sleep(0.3)
+            else :
+                print("stop scrawl")
+                return 
 
         return None
 
-udn = UDN(1000000, "https://udn.com/news/story/124222/", 8243941)
-udn.get_info()
+cnyes = CNYES(1000000, "https://news.cnyes.com/news/id/", 5723219)
+cnyes.get_info()
