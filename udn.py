@@ -20,6 +20,9 @@ import time
 """
 
 class UDN:
+    """聯合新聞網爬蟲
+    """
+        
     def __init__(self, page: int, start_url: str, start_id: int) -> None:
         """
         Initializes the UDN scraper class with the number of pages, the base URL, and the starting article ID.
@@ -121,6 +124,6 @@ class UDN:
 
         return None
 
-# Create an instance of UDN scraper and get article info
-udn = UDN(1000000, "https://udn.com/news/story/124222/", 8243941)
-udn.get_info()
+if __name__ == "__main__":
+    udn = UDN(1000000, "https://udn.com/news/story/124222/", 8243941)
+    udn.get_info()

@@ -20,6 +20,9 @@ import time
 """
 
 class CNYES:
+    """鉅亨網爬蟲
+    """    
+    
     def __init__(self, page: int, start_url: str, start_id: int) -> None:
         """
         Initializes the CNYES class with aritcle count, starting URL, and the latest article ID.
@@ -130,5 +133,6 @@ class CNYES:
         return self.article_list
 
 # 測試代碼
-cnyes = CNYES(100, "https://news.cnyes.com/news/id/", 5723219)
-cnyes.get_info()
+if __name__ == "__main__":
+    cnyes = CNYES(100, "https://news.cnyes.com/news/id/", 5723219)
+    cnyes.get_info()

@@ -21,6 +21,8 @@ import json
 """
 
 class TVBS:
+    """TVBS爬蟲
+    """    
     
     def __init__(self, page: int, start_url: str, start_id: int) -> None:  
         """
@@ -127,6 +129,6 @@ class TVBS:
         return None
 
 
-# 創建 TVBS 類的實例並抓取文章信息
-tvbs = TVBS(50, "https://news.tvbs.com.tw/money/", 2628359)
-tvbs.get_info()
+if __name__ == "__main__":
+    tvbs = TVBS(50, "https://news.tvbs.com.tw/money/", 2628359)
+    tvbs.get_info()

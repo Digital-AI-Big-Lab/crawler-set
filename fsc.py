@@ -20,6 +20,9 @@ import time
 """
 
 class FSC:
+    """金管會爬蟲
+    """    
+    
     def __init__(self, page: int, url: str) -> None:
         """
         Initializes the FSC class, setting the number of articles to scrape
@@ -85,8 +88,6 @@ class FSC:
         
         return url_list 
 
-# Create an instance of the FSC class, specifying the number of pages and target URL
-fsc = FSC(1, "https://www.fsc.gov.tw/ch/home.jsp?id=2&parentpath=0")
-
-# Call the get_article_link method and print the extracted article links
-print(fsc.get_article_link(fsc.fetch_data("https://www.fsc.gov.tw/ch/home.jsp?id=2&parentpath=0")))
+if __name__ == "__main__":
+    fsc = FSC(1, "https://www.fsc.gov.tw/ch/home.jsp?id=2&parentpath=0")
+    print(fsc.get_article_link(fsc.fetch_data("https://www.fsc.gov.tw/ch/home.jsp?id=2&parentpath=0")))
