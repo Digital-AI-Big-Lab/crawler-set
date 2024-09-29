@@ -146,24 +146,25 @@ class FSC:
                 page += 1
 
         return all_articles
+    
+if __name__ == "__main__":
 
-# URLs and categories
-urls = {
-    "重要公告": "https://www.fsc.gov.tw/ch/home.jsp?id=97&parentpath=0%2C2",
-    "新聞稿": "https://www.fsc.gov.tw/ch/home.jsp?id=96&parentpath=0%2C2",
-    "即時新聞澄清": "https://www.fsc.gov.tw/ch/home.jsp?id=609&parentpath=0,2&mcustomize=disputearea_list.jsp"
-}
+    # URLs and categories
+    urls = {
+        "重要公告": "https://www.fsc.gov.tw/ch/home.jsp?id=97&parentpath=0%2C2",
+        "新聞稿": "https://www.fsc.gov.tw/ch/home.jsp?id=96&parentpath=0%2C2",
+        "即時新聞澄清": "https://www.fsc.gov.tw/ch/home.jsp?id=609&parentpath=0,2&mcustomize=disputearea_list.jsp"
+    }
+    # User input for max pages
+    max_pages_input = input("請輸入要爬取的最大頁數（或按 Enter 繼續抓取所有頁面）：")
+    max_pages = int(max_pages_input) if max_pages_input.isdigit() else None
 
-# User input for max pages
-max_pages_input = input("請輸入要爬取的最大頁數（或按 Enter 繼續抓取所有頁面）：")
-max_pages = int(max_pages_input) if max_pages_input.isdigit() else None
+    # Initialize and run the scraper
+    scraper = FSC(urls, max_pages)
+    all_articles = scraper.scrape_all()
 
-# Initialize and run the scraper
-scraper = FSC(urls, max_pages)
-all_articles = scraper.scrape_all()
+    # Save results to JSON file
+    with open('fsc_articles.json', 'w', encoding='utf-8') as f:
+        json.dump(all_articles, f, ensure_ascii=False, indent=4)
 
-# Save results to JSON file
-with open('fsc_articles.json', 'w', encoding='utf-8') as f:
-    json.dump(all_articles, f, ensure_ascii=False, indent=4)
-
-print("爬取完成，結果已保存到 fsc_articles.json")
+    print("爬取完成，結果已保存到 fsc_articles.json")

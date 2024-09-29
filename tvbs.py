@@ -193,10 +193,11 @@ class TVBS:
             time.sleep(0.05)  # Add delay to prevent rate-limiting or server overload
         return self.article_list
 
+if __name__ == "__main__":
 
-# Example usage
-tvbs = TVBS(10, "https://news.tvbs.com.tw/money/", 2628359)
+    # Example usage
+    tvbs = TVBS(10, "https://news.tvbs.com.tw/money/", 2628359)
 
-# Write the scraped data to a JSON file
-with open('tvbs.json', 'w', encoding='utf-8') as f:
-    json.dump(tvbs.get_info(), f, ensure_ascii=False, indent=4)
+    # Write the scraped data to a JSON file
+    with open('tvbs.json', 'w', encoding='utf-8') as f:
+        json.dump(tvbs.get_info(), f, ensure_ascii=False, indent=4)
