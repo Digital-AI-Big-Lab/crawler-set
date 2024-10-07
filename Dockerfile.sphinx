@@ -1,0 +1,5 @@
+FROM sphinxdoc/sphinx:8.0.0
+
+WORKDIR /docs
+
+RUN pip install sphinx-rtd-theme
