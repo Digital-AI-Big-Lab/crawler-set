@@ -1,0 +1,4 @@
+/* 修改側邊欄的背景色 */
+.wy-side-nav-search {
+    background-color: #ddd;  /* 設定側邊欄背景顏色 */
+}
