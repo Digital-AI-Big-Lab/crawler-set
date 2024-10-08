@@ -49,7 +49,7 @@ class PTT:
 
     @staticmethod
     def get_raw_page(url: str) -> BeautifulSoup:
-        return BeautifulSoup(requests.get(url).text, "html.parser")
+        return BeautifulSoup(requests.get(url, allow_redirects=False).text, "html.parser")
 
     def get_last_page_number(self, soup: str) -> int:
         """
